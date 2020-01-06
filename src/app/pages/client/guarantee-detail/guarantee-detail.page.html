@@ -1,0 +1,36 @@
+<app-header titulo="Detalles del Reclamo"></app-header>
+
+<ion-content>
+    <ion-row>
+        <ion-col>
+            <ion-card *ngFor="let c of claims">
+                <ion-card-header class="card">
+                    <p><strong>Cliente: </strong> {{c.ordenServicio.solicitudServicio.usuario.nombre}} {{c.ordenServicio.solicitudServicio.usuario.apellido}}
+                    </p>
+                    <p><strong>Técnico encargado: </strong> {{c.ordenServicio.usuario.nombre}} {{c.ordenServicio.usuario.apellido}}
+                    </p>
+                    <p><strong>Servicio Solicitado: </strong> {{c.ordenServicio.solicitudServicio.catalogoServicio.descripcion}}
+                    </p>
+                    <p><strong>Modelo del equipo: </strong> {{c.ordenServicio.solicitudServicio.modeloEquipo.nombre}}
+                    </p>
+                    <p><strong>Problema del equipo: </strong> {{c.ordenServicio.solicitudServicio.revision.diagnostico}}
+                    </p>
+                    <p><strong>Motivo de reclamo: </strong> {{c.tipoReclamo.nombre}}
+                    </p>
+                    <p><strong>Estatus del reclamo: </strong> {{c.estatus}}</p>
+                </ion-card-header>
+                <ion-item>
+                    <ion-label text-wrap>
+
+                    </ion-label>
+                </ion-item>
+            </ion-card>
+        </ion-col>
+    </ion-row>
+
+
+
+
+
+
+</ion-content>

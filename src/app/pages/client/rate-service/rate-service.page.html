@@ -1,0 +1,68 @@
+<app-header titulo="Calificar servicio"></app-header>
+<ion-content>
+    <form [formGroup]="rateServiceGroup" (ngSubmit)="onSubmit()">
+        <ion-grid>
+            <ion-row>
+                <ion-col>
+                    <ion-list-header color="secondary">
+                        <ion-label>¿Cuántas estrellas le da este servicio?</ion-label>
+                    </ion-list-header>
+                    <rating [formControl]="rateServiceGroup.get('stars')" readonly="false" size="default" class="rate"></rating>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    <ion-list-header color="secondary">
+                        <ion-label>Su opinión es importante para nosotros: </ion-label>
+                    </ion-list-header>
+                    <ion-textarea [formControl]="rateServiceGroup.get('comments')" placeholder="De su opinión del servicio"></ion-textarea>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    <ion-item-divider color="secondary">
+                        <ion-label>
+                            Por favor responda algunas preguntas
+                        </ion-label>
+                    </ion-item-divider>
+                    <ion-list>
+                        <div formArrayName="items" *ngFor="let rate of item?.controls; let i = index;">
+                            <div [formGroupName]="i">
+                                <ion-radio-group formControlName="answer">
+                                    <ion-list-header color="tertiary">
+                                        <ion-label>{{ item.controls[i].controls.question.value }}</ion-label>
+                                    </ion-list-header>
+                                    <ion-item lines="none">
+                                        <ion-label> Muy mal </ion-label>
+                                        <ion-radio slot="start" value="1"></ion-radio>
+                                    </ion-item>
+                                    <ion-item lines="none">
+                                        <ion-label> Mal </ion-label>
+                                        <ion-radio slot="start" value="2"></ion-radio>
+                                    </ion-item>
+                                    <ion-item lines="none">
+                                        <ion-label> Regular </ion-label>
+                                        <ion-radio slot="start" value="3"></ion-radio>
+                                    </ion-item>
+                                    <ion-item lines="none">
+                                        <ion-label> Bien </ion-label>
+                                        <ion-radio slot="start" value="4"></ion-radio>
+                                    </ion-item>
+                                    <ion-item lines="none">
+                                        <ion-label> Muy bien </ion-label>
+                                        <ion-radio slot="start" value="5"></ion-radio>
+                                    </ion-item>
+                                </ion-radio-group>
+                            </div>
+                        </div>
+                    </ion-list>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    <ion-button type="submit" expand="block" color="secondary" (click)="presentContact()"> Enviar </ion-button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </form>
+</ion-content>

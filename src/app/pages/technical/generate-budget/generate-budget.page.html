@@ -1,0 +1,46 @@
+<!--PASO 6: con ayuda del postman o del navegador, en caso que se pueda acceder a la ruta.. revisar cual es el nombre
+de los atributos que queremos mostrar/enviar POR FAVOR COMUNICARSE CONMIGO PARA ASEGURAR QUE LOS DATOS SEAN CORRECTOS-->
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/app1/tab-technical"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Presupuesto</ion-title>
+    </ion-toolbar>
+
+    <ion-searchbar animated (ionChange)="find( $event )" class="searchbar-input"></ion-searchbar>
+</ion-header>
+
+<ion-content fullscreen #myContent>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <ion-grid>
+        <ion-list>
+            <!--PASO 7: esto deberia estar listo en todos los componentes, cuando mucho, hay que editar pequenas cosas
+        sin embargo, en caso que no, pues debemos iterar el array budget con ng for, interpolar el nombre de lo que queremos mostrar
+      y mandar el parametro que queremos mandar, en este caso, vi en postman que para acceder al id solo tenia que
+    poner array.id y para acceder al nombre del equipo tenia que colocar array.modeloEquipo.nombre, recuerde por favor
+  chequear esto varias veces, y hablarlo conmigo -->
+            <ion-item *ngFor="let pres of budget | filter: findText: 'descripcion'" routerLink="/budget-details/{{pres.id}}" detail>
+                <ion-label>
+                    <h3>Equipo: {{ pres.modeloEquipo.marca.nombre }} {{ pres.modeloEquipo.nombre }}</h3>
+                    <h3>Descripción de la falla: {{ pres.descripcion }} </h3>
+                    <h3>Diagnóstico: {{ pres.revision.diagnostico }}</h3>
+                    <h3>Cliente: {{ pres.usuario.nombre }} {{ pres.usuario.apellido }}</h3>
+                </ion-label>
+            </ion-item>
+
+
+        </ion-list>
+        <!--<ion-row>
+        <ion-col size="12" *ngFor="let rev of review | filter: findText: 'modelo'">
+          <ion-card class="colors" routerLink="/review-details/{{rev.id}}" detail>
+            <ion-text> 
+             {{ rev.modelo }}
+            </ion-text>
+          </ion-card>
+        </ion-col>
+      </ion-row>-->
+    </ion-grid>
+</ion-content>

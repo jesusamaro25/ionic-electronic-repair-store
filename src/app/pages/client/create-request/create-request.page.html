@@ -1,0 +1,67 @@
+<app-header titulo="Enviar solicitud"></app-header>
+
+<ion-content>
+    <ion-grid>
+        <ion-list>
+            <ion-item>
+                <ion-label>
+                    <ion-text> <strong>Fecha de solicitud:  </strong> </ion-text>{{ fechaHoy | date: 'dd-MM-yyyy' }}
+                </ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label>
+                    <ion-text> <strong>Marca del equipo: </strong></ion-text>{{ marcaEquipo }}
+                </ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label>
+                    <ion-text> <strong>Modelo de equipo: </strong> </ion-text> {{ modeloEquipo }}
+                </ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label text-wrap>
+                    <ion-text> <strong> Servicio solicitado: </strong> {{ nombreServicio }}</ion-text>
+                </ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label>
+                    <ion-textarea> <strong>  Falla: </strong> {{ falla }} </ion-textarea>
+                </ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label>
+                    <ion-text> <strong>Fecha de revisión: </strong> {{ fecha }}</ion-text>
+                </ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label>
+                    <ion-text> <strong>Hora: </strong></ion-text> {{ hora }}
+                </ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label>
+                    <ion-textarea><strong> Promoción: </strong> {{ nombrePromocion }}</ion-textarea>
+                </ion-label>
+            </ion-item>
+            <ion-item *ngFor="let c of costo">
+                <ion-label>
+                    <ion-textarea> <strong> Rango de precio: </strong> La revision de tu equipo costará entre {{c.precioMinimoRevision}} y {{c.precioMaximoRevision}}</ion-textarea>
+                </ion-label>
+            </ion-item>
+        </ion-list>
+        <div class="centrado">
+            <ion-row >
+                <ion-col>
+                    <ion-button (click)="alertCancelSol()" color="medium" shape="block">
+                        Cancelar
+                    </ion-button>
+                </ion-col>
+                <ion-col>
+                    <ion-button (click)="alertSendSol()" color="primary" shape="block">
+                        Aceptar
+                    </ion-button>
+                </ion-col>
+            </ion-row>
+        </div>
+    </ion-grid>
+</ion-content>

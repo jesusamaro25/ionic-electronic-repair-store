@@ -1,0 +1,75 @@
+<app-header titulo="Editar perfil"> </app-header>
+<ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <form [formGroup]="editTechnicalGroup">
+        <section class="center">
+            <ion-avatar class="center">
+                <img src="{{image || usuario.urlFoto}}">
+                <ion-icon name="camera" id="camera" (click)="openActionSheet()"></ion-icon>
+            </ion-avatar>
+            <ion-text color="primary">
+                <h3>{{usuario.nombre}} {{usuario.apellido}}</h3>
+            </ion-text>
+        </section>
+        <ion-card>
+            <ion-card-header>
+                <ion-card-subtitle class="tittle">Datos personales</ion-card-subtitle>
+            </ion-card-header>
+            <ion-item>
+                <ion-label position="floating">Documento de Identidad:</ion-label>
+                <ion-input [formControl]="editTechnicalGroup.get('dni')" value="{{ usuario.documentoIdentidad }}"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Correo:</ion-label>
+                <ion-input [formControl]="editTechnicalGroup.get('email')" value="{{ usuario.correo }}"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Dirección:</ion-label>
+                <ion-textarea [formControl]="editTechnicalGroup.get('address')" value="{{ usuario.direccion }}"></ion-textarea>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Teléfono:</ion-label>
+                <ion-input [formControl]="editTechnicalGroup.get('phone')" value="{{ usuario.telefono }}"></ion-input>
+            </ion-item>
+        </ion-card>
+        <ion-card>
+            <ion-card-header>
+                <ion-card-subtitle class="tittle">Escoja sus especialidades</ion-card-subtitle>
+            </ion-card-header>
+            <ion-list>
+                <ion-item>
+                    <ion-label>Especialidades</ion-label>
+                    <ion-select multiple="true" okText="Ok" cancelText="Cancelar" [(ngModel)]="skill" [compareWith]="compareFn" [ngModelOptions]="{standalone: true}">
+                        <ion-select-option *ngFor="let entry of skillAll" [value]="entry">{{ entry.descripcion }}</ion-select-option>
+                    </ion-select>
+                </ion-item>
+            </ion-list>
+        </ion-card>
+        <ion-card>
+            <ion-card-header>
+                <ion-card-subtitle class="tittle">Contraseña</ion-card-subtitle>
+            </ion-card-header>
+            <ion-list>
+                <ion-item routerLink="/change-password-technical" detail>
+                    <ion-label>Cambiar contraseña</ion-label>
+                </ion-item>
+            </ion-list>
+        </ion-card>
+        <div class="centrado">
+            <ion-button block color="primary" icon-start (click)="onSubmit()">
+                <ion-icon name='md-open'></ion-icon>
+                Actualizar
+            </ion-button>
+        </div>
+        <!--PRUEBAS LOCAS DE AMARO NO BORRAR
+   <ion-row>
+      <ion-col size="3">
+      <ion-card>
+            <img [src]="image" *ngIf="image">  
+        </ion-card>
+        </ion-col>
+    </ion-row> -->
+    </form>
+</ion-content>

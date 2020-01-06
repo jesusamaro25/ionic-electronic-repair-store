@@ -1,0 +1,18 @@
+<app-header titulo="Preguntas frecuentes"></app-header>
+
+<ion-content>
+    <ion-grid>
+        <ion-list *ngFor="let item of faqs; let i = index;" class="accordion-list ion-no-padding" lines="none" detail="false">
+            <ion-item tappable (click)="toggleSection(i)" [ngClass]="{'section-active': item.open, 'section': !item.open}">
+                <ion-icon slot="start" name="arrow-dropright" *ngIf="!item.open"></ion-icon>
+                <ion-icon slot="start" name="close" *ngIf="item.open"></ion-icon>
+                <p> {{ item.pregunta }} </p>
+            </ion-item>
+            <div *ngIf="item.respuesta && item.open">
+                <ion-list lines="none" class="child-list">
+                    <app-accordion [accordion]="item" *ngIf="item.respuesta"></app-accordion>
+                </ion-list>
+            </div>
+        </ion-list>
+    </ion-grid>
+</ion-content>

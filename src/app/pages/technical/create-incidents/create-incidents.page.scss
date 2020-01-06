@@ -1,0 +1,36 @@
+
+.colors {
+    background-color: rgb(228, 228, 228);
+    color: black;
+}
+
+ion-label{
+    display: block;
+    padding-top:1%;
+}
+
+div{
+    display: inline-block;
+}
+
+.info{
+    width: 67%;
+    margin: 2%;
+}
+
+.date {
+    margin: 3% 0% 2% 2%;
+    vertical-align: top;
+}
+
+.equip{
+    font-weight: bold;
+}
+
+ion-card{
+    margin-top: 0%;
+}
+
+ion-button {
+    --background: #872309;
+}

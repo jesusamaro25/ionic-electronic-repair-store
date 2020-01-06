@@ -1,0 +1,22 @@
+<app-header titulo="Contáctanos"></app-header>
+
+<ion-content padding>
+    <form novalidate [formGroup]="serviceGroup" (ngSubmit)="onSubmit()">
+        <ion-list>
+            <ion-item color="secondary">
+                <ion-label position="floating">Motivo: </ion-label>
+                <ion-select cancelText="Cancelar" okText="Seleccionar" required (ionChange)="generarLink()" [formControl]="serviceGroup.get('option')">
+                    <ion-select-option *ngFor="let opt of option" [value]="opt">{{ opt.nombre }}</ion-select-option>
+                </ion-select>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Comentario: </ion-label>
+                <ion-textarea type="text" formControlName="comentario" (ionBlur)="generarLink()" required>
+                </ion-textarea>
+            </ion-item>
+        </ion-list>
+        <ion-button expand="block" type="submit" [disabled]="serviceGroup.invalid">
+            Enviar
+        </ion-button>
+    </form>
+</ion-content>

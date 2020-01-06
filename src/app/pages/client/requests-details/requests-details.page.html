@@ -1,0 +1,56 @@
+<app-header titulo="Detalle de la solicitud"></app-header>
+
+<ion-content *ngFor="let r of request">
+    <ion-grid>
+        <ion-list>
+            <ion-item>
+                <ion-label>
+                    <ion-text>Cliente:</ion-text> {{r.usuario.nombre}} {{r.usuario.apellido}}
+                </ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label>
+                    <ion-text>Servicio:</ion-text> {{r.catalogoServicio.descripcion}}
+                </ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label>
+                    <ion-text>Marca:</ion-text> {{r.modeloEquipo.marca.nombre}}
+                </ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label>
+                    <ion-text>Modelo:</ion-text> {{r.modeloEquipo.nombre}}
+                </ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label>
+                    <ion-textarea>Problema: {{r.descripcion}}</ion-textarea>
+                </ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label>
+                    <ion-text>Fecha de la solicitud:</ion-text> {{r.fechaCreacion}}
+                </ion-label>
+            </ion-item>
+            <ion-item *ngIf="promo">
+                <ion-label color="primary" class="strong">
+                    <ion-textarea>Promoción: {{r.promocion.nombre}}</ion-textarea>
+                </ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label>
+                    <ion-text>Estatus:</ion-text> {{estatus}}
+                </ion-label>
+            </ion-item>
+            <ion-item *ngIf="motivo">
+                <ion-label>
+                    <ion-textarea>Motivo de rechazo:{{r.motivoRechazo.descripcion}}</ion-textarea>
+                </ion-label>
+            </ion-item>
+        </ion-list>
+        <ion-button expand="block" color="secondary" routerLink="/timeline-request/{{ r.id }}">
+            Ver progeso de reparación
+        </ion-button>
+    </ion-grid>
+</ion-content>

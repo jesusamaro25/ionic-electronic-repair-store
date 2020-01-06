@@ -1,0 +1,46 @@
+<app-header titulo="Perfil"></app-header>
+<ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <section class="center">
+        <ion-avatar class="center">
+            <img src="{{usuario.urlFoto}}">
+        </ion-avatar>
+        <ion-text color="primary">
+            <h3>{{usuario.nombre}} {{usuario.apellido}}</h3>
+        </ion-text>
+    </section>
+    <ion-card>
+        <ion-card-header>
+            <ion-card-subtitle class="tittle">Datos personales</ion-card-subtitle>
+        </ion-card-header>
+        <ion-item-group>
+            <ion-item>Documento de identidad: {{usuario?.documentoIdentidad}}</ion-item>
+            <ion-item>Correo: {{usuario?.correo}}</ion-item>
+            <ion-item>
+                <ion-textarea disabled="true">Dirección: {{usuario?.direccion}}</ion-textarea>
+            </ion-item>
+            <ion-item>Sexo: {{usuario?.sexo}} </ion-item>
+            <ion-item>Fecha de nacimiento: {{usuario?.fechaNacimiento}} </ion-item>
+            <ion-item>Teléfono: {{usuario?.telefono}} </ion-item>
+        </ion-item-group>
+    </ion-card>
+    <ion-card>
+        <ion-card-header>
+            <ion-card-subtitle class="tittle">Especialidades</ion-card-subtitle>
+        </ion-card-header>
+        <ion-list>
+            <ion-item *ngFor="let entry of skills">
+                <ion-label>{{entry.descripcion}}</ion-label>
+                <ion-checkbox slot="end" checked disabled></ion-checkbox>
+            </ion-item>
+        </ion-list>
+    </ion-card>
+    <div class="button">
+        <ion-button color="secondary" routerLink="/profile-technical-edit">
+            <ion-icon name='md-open'></ion-icon>
+            Editar perfil
+        </ion-button>
+    </div>
+</ion-content>

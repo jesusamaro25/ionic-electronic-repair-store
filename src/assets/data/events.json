@@ -1,0 +1,60 @@
+[ {
+    "calendar": { 
+    "id": 1,
+    "date": "19-10-2019",
+    "status": "Agendado",
+    "title": "revision de telefono",
+    "bloqueHorario": {
+     "id": 1,
+     "descripcion": "ejemplo",
+     "startTime":"08:00am",
+     "endTime": "09:00am"
+    },
+    "calendar_worker":  {
+         "id":  1,
+         "nombre": "ejemplo",
+         "apellido": "ejemplo",
+         "correo": "ejemplo"
+    }
+    }
+},
+{
+     "calendar": { 
+     "id": 2,
+     "date": "22-10-2019",
+     "status": "Agendado",
+     "title": "revision de consola",
+     "bloqueHorario": {
+          "id": 2,
+          "descripcion": "ejemplo",
+          "startTime":"10:00am",
+          "endTime": "11:00am"
+         },
+     "calendar_worker":  [{
+          "id":  2,
+          "nombre": "ejemplo",
+          "apellido": "ejemplo",
+          "correo": "ejemplo"
+     }]
+     }
+ },
+ {
+     "calendar": { 
+     "id": 3,
+     "date": "27-10-2019",
+     "status": "Agendado",
+     "title": "revision de nevera",
+     "bloqueHorario": {
+          "id": 3,
+          "descripcion": "ejemplo",
+          "startTime":"06:00am",
+          "endTime": "07:00am"
+         },
+     "calendar_worker":  [{
+          "id":  3,
+          "nombre": "ejemplo",
+          "apellido": "ejemplo",
+          "correo": "ejemplo"
+     }]
+     }
+ }]

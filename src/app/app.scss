@@ -1,0 +1,25 @@
+// App Styles
+// ----------------------------------------------------------------------------
+// Put style rules here that you want to apply to the entire application. These 
+// styles are for the entire app and not just one component. Additionally, this 
+// file can hold Sass mixins, functions, and placeholder classes to be imported 
+// and used throughout the application.
+.monthview-selected {
+    background-color: #1891ac !important;
+    color: white;
+}
+
+.monthview-current {
+    background-color: #18aca0 !important;
+    color: white;
+}
+
+.alert-tappable.alert-radio {
+    height: auto;
+    contain: content;
+}
+
+.alert-radio-label.sc-ion-alert-md,
+.alert-radio-label.sc-ion-alert-ios {
+    white-space: normal;
+}

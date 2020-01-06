@@ -1,0 +1,39 @@
+<app-header titulo="Registrar incidencia"></app-header>
+
+<ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" class="animated fadeIn fast">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
+  <ion-grid>
+    <ion-row *ngFor="let rinc of rincidencias">
+      <ion-col>
+        <ion-card class="colors"detail>
+          <div class="date">
+            <ion-text>
+              <ion-label>
+                {{rinc.fecha | date}}
+              </ion-label>
+              <ion-label>
+                {{rinc.hora}}
+              </ion-label>
+              <ion-button size="small" color="danger" routerLink="/incidents-register"><ion-icon name="warning"></ion-icon></ion-button>
+            </ion-text>
+          </div>
+          <div class="info">
+            <ion-text>
+              <ion-label class="equip">
+                {{rinc.modeloequipo}}
+              </ion-label>
+              <ion-label>
+                {{rinc.descripcion}}
+              </ion-label>
+              <ion-label>
+                {{rinc.cliente}}     
+              </ion-label>
+            </ion-text>
+          </div>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

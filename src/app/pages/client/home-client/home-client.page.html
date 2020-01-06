@@ -1,0 +1,57 @@
+<app-menu-client></app-menu-client>
+    <ion-router-outlet id="principal-client"></ion-router-outlet> 
+<ion-header>
+  <ion-toolbar color="primary" >
+    <ion-buttons slot="start">
+      <ion-button (click)="toggleMenu()">
+        <ion-icon slot="icon-only" name="menu"></ion-icon>
+      </ion-button> 
+    </ion-buttons>
+    <ion-title>Inicio</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-text class="ion-margin-bottom ion-text-center">
+    <h1 class="ion-no-margin">{{ welcomeMessage }} <br>
+      {{ username }}  {{ apellido }}</h1>
+    </ion-text>
+  <ion-grid fixed >
+    <ion-row>
+      <ion-col size="6">
+        <ion-card class="ion-text-center" routerLink="/create-service" color="secondary">
+          <ion-icon name="add-circle"></ion-icon>
+          <ion-text>
+            <h6>Crear solicitud</h6>
+          </ion-text>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <ion-card class="ion-text-center" routerLink="/budget" color="tertiary">
+          <ion-icon name="logo-usd"></ion-icon>
+          <ion-text>
+            <h6>Presupuestos</h6>
+          </ion-text>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+    <ion-col size="6">
+      <ion-card class="ion-text-center" routerLink="/requests" color="fourth">
+        <ion-icon name="mail"></ion-icon>
+          <ion-text>
+            <h6>Mis solicitudes</h6>
+          </ion-text>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <ion-card class="ion-text-center" routerLink="/my-equipments" color="fifth">
+          <ion-icon name="build"></ion-icon>
+          <ion-text>
+            <h6>Mis equipos</h6>
+          </ion-text>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

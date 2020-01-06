@@ -1,0 +1,36 @@
+<app-header titulo="Detalle de equipo" color="primary"></app-header>
+
+<ion-content *ngFor="let rev of service">
+    <ion-grid>
+        <ion-list>
+            <ion-item>
+                <ion-label>
+                    <ion-textarea><strong> Nombre del servicio: </strong> {{rev.catalogoServicio.descripcion}} </ion-textarea>
+                </ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label>
+                    <ion-text><strong> Marca del equipo: </strong> {{rev.modeloEquipo.marca.nombre}} </ion-text>
+                </ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label>
+                    <ion-text><strong> Modelo del equipo: </strong> {{rev.modeloEquipo.nombre}} </ion-text>
+                </ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label>
+                    <ion-text><strong> Cliente: </strong> {{rev.usuario.nombre}} {{rev.usuario.apellido}} </ion-text>
+                </ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label>
+                    <ion-textarea><strong> Problema del equipo: </strong> {{rev.descripcion}} </ion-textarea>
+                </ion-label>
+            </ion-item>
+        </ion-list>
+        <ion-button expand="block" color="secondary" routerLink="/generate-review/{{rev.id}}">
+            Generar Diagnóstico
+        </ion-button>
+    </ion-grid>
+</ion-content>

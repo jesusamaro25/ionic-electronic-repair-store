@@ -1,0 +1,7 @@
+{
+  "name": "colossus",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

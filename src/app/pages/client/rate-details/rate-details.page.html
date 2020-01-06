@@ -1,0 +1,60 @@
+<app-header titulo="Calificar servicio"></app-header>
+
+<ion-content *ngFor="let r of request">
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <ion-list>
+                    <ion-item>
+                        <ion-label>
+                            <ion-text>Cliente:</ion-text> {{r.usuario.nombre}} {{r.usuario.apellido}}
+                        </ion-label>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>
+                            <ion-text>Servicio:</ion-text> {{r.catalogoServicio.descripcion}}
+                        </ion-label>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>
+                            <ion-text>Marca:</ion-text> {{r.modeloEquipo.marca.nombre}}
+                        </ion-label>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>
+                            <ion-text>Modelo:</ion-text> {{r.modeloEquipo.nombre}}
+                        </ion-label>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>
+                            <ion-textarea>Problema: {{r.descripcion}}</ion-textarea>
+                        </ion-label>
+                    </ion-item>
+                    <ion-item *ngIf="promo">
+                        <ion-label>
+                            <ion-textarea>Promoción: {{r.promocion.nombre}}</ion-textarea>
+                        </ion-label>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>
+                            <ion-text>Sub total:</ion-text> {{subTotal}}
+                        </ion-label>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label class="strong">
+                            <ion-text>Descuento:</ion-text> {{promocion }} ({{r.promocion.descuento.porcentaje }}%)
+                        </ion-label>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>
+                            <ion-text>Total:</ion-text> {{total}}
+                        </ion-label>
+                    </ion-item>
+                </ion-list>
+                <ion-button expand="block" color="secondary" routerLink="/rate-service/{{r.id}}">
+                    Calificar
+                </ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

@@ -1,0 +1,25 @@
+.colors {
+    background-color: var(--ion-color-fourth-tint);
+}
+
+ion-card{
+    width: 90%;
+    height: 70%;
+    color:white;
+    position: relative;
+}
+
+p {
+    padding-top: 3.5%;
+}
+
+.promo {
+    font-size: 10px;
+    background-color: #474747;
+    opacity: 0.5;
+    --color: white;
+    position: absolute;
+    left: 21.25%;
+    bottom: 70%;
+    --padding-bottom: 2.5%;
+}

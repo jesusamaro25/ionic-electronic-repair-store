@@ -1,0 +1,33 @@
+<app-header titulo="Datos del equipo"></app-header>
+
+<ion-content padding>
+  <form novalidate [formGroup]="equipmentGroup">
+    <ion-grid>
+
+      <ion-item color="secondary">
+        <ion-label position="floating">Marca</ion-label>
+        <ion-select cancelText="Cancelar" okText="Seleccionar" formControlName="marca"
+          (ionChange)="mostrarSelectModelo()">   
+          <ion-select-option *ngFor="let m of brand" [value]="m">{{ m.nombre }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item color="secondary" *ngIf="mostrarModelo">
+        <ion-label position="floating">Modelo</ion-label>
+        <ion-select cancelText="Cancelar" okText="Seleccionar" formControlName="modelo">
+          <ion-select-option *ngFor="let m of model" [value]="m">{{ m.nombre }}</ion-select-option>
+        </ion-select>
+      </ion-item><br>
+      <ion-item color="secondary">
+        <ion-label position="floating">Descripción de la falla:</ion-label>
+        <ion-input type="text" formControlName="descripcion" (ionBlur)="generarRuta()"
+          placeholder="Describe la falla que presenta tu equipo" required> </ion-input>
+      </ion-item>
+    </ion-grid>
+    
+  </form>
+  <ion-button expand="block" color="primary" (click)="consoleLow()" [disabled]="equipmentGroup.invalid"
+    (click)="goToPage()">
+    Siguiente
+  </ion-button>
+
+</ion-content>

@@ -1,0 +1,34 @@
+<app-header titulo="Presupuestos"></app-header>
+
+<ion-content>
+    <div *ngIf="errorLoad; else notShow" class="error">
+        <img src="assets/icon/error.png" alt="Error de carga" class="image">
+
+        <p>
+            No se ha podido cargar la página de forma exitosa, por favor intente de nuevo.
+        </p>
+    </div>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <ng-template #notShow>
+        <ion-list>
+
+            <ion-item *ngFor="let bud of budget | filter: findText: 'name'" routerLink="/budget-detail/{{bud.id}}" detail>
+
+
+
+
+                <ion-label>
+
+                    <h3>{{ bud.modeloEquipo.marca.nombre }} {{ bud.modeloEquipo.nombre }} ({{ bud.catalogoServicio.descripcion }})</h3>
+
+
+                </ion-label>
+            </ion-item>
+
+        </ion-list>
+    </ng-template>
+
+
+</ion-content>

@@ -1,0 +1,26 @@
+<app-header titulo="Contáctanos">
+</app-header>
+
+<ion-content padding>
+    <form [formGroup]="contactGroup" (ngSubmit)="onSubmit()">
+        <ion-list>
+            <ion-item color="secondary">
+                <ion-label position="floating">Motivo: </ion-label>
+                <ion-select cancelText="Cancelar" okText="Seleccionar" required (ionChange)="onChange($event)">
+                    <ion-select-option *ngFor="let opt of option" [value]="opt.id">{{ opt.nombre }}</ion-select-option>
+                </ion-select>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Correo electrónico: </ion-label>
+                <ion-input [formControl]="contactGroup.get('email')" required></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Comentario: </ion-label>
+                <ion-textarea type="text" required [formControl]="contactGroup.get('comment')"></ion-textarea>
+            </ion-item>
+        </ion-list>
+        <ion-button expand="block" type="submit">
+            Enviar
+        </ion-button>
+    </form>
+</ion-content>

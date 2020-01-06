@@ -1,0 +1,53 @@
+<app-header titulo="Canal de escucha"></app-header>
+
+<ion-content padding>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button block color="primary">
+            <ion-icon name="add" routerLink="/contact-message"> </ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
+    <ion-list class="animated fadeIn fast">
+
+
+
+
+
+        <ion-item *ngFor="let con of contact| filter: findText: 'name'">
+
+            <ion-avatar slot="start">
+                <img src="{{ logo?.urlLogo }}" alt="Smartech" />
+            </ion-avatar>
+
+
+
+            <ion-label>
+
+                <ion-text><strong>{{ con.tipoComentario.nombre }}</strong></ion-text>
+                <ion-textarea>
+                    Pregunta: {{ con.descripcion }}
+                </ion-textarea>
+                <ion-textarea>
+                    Respuesta: {{ con.respuesta }}
+                </ion-textarea>
+            </ion-label>
+
+
+        </ion-item>
+
+
+
+
+
+
+
+    </ion-list>
+
+
+
+
+</ion-content>

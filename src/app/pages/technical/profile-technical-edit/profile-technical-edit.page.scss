@@ -1,0 +1,52 @@
+
+.theme-1, .theme-color{
+    --color: white;
+    --text-align: center;
+}
+
+.theme-color{
+    --background: #253b6d;
+}
+
+.theme-1{
+    --background: #1f5f8b;
+}
+
+.center{
+    margin: auto;
+    padding-top: 10px;
+    
+ }
+
+ ion-content {
+    --background: url('/assets/fondo.jpg') no-repeat center center / cover;
+}
+
+ion-avatar {
+    width: 100px;
+    height: 100px;
+    position: relative;
+}
+
+.centrado{
+    text-align: center;
+    padding-bottom: 7%;
+}
+
+.tittle {
+    font-weight: bold;
+    color:#474747;
+}
+
+#camera {
+    position: absolute;
+    z-index: 1;
+    margin-top: 25%;
+    color: white;
+    margin-left: -70%;
+    font-size: 40px;
+}
+
+h3 {
+    text-align: center;
+}

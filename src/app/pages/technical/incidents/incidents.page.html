@@ -1,0 +1,39 @@
+<app-header titulo="Incidencias"></app-header>
+
+<ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" class="animated fadeIn fast">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <ion-grid>
+        <ion-row *ngFor="let inc of incidencias">
+            <ion-col>
+                <ion-card class="colors" detail>
+                    <div class="date">
+                        <ion-text>
+                            <ion-label>
+                                Fecha de creación
+                            </ion-label>
+                            <ion-label>
+                                {{inc.fechaCreacion}}
+                            </ion-label>
+                        </ion-text>
+                    </div>
+                    <div class="info">
+                        <ion-text>
+                            <ion-label class="equip">
+                                Equipo: {{inc.ordenServicio.solicitudServicio.modeloEquipo.marca.nombre}} {{inc.ordenServicio.solicitudServicio.modeloEquipo.nombre}}
+
+                            </ion-label>
+                            <ion-label>
+                                Incidencia: {{inc.incidencia.tipoIncidencia.nombre}}
+                            </ion-label>
+                            <ion-label>
+                                Cliente: {{inc.ordenServicio.solicitudServicio.usuario.nombreCompleto}}
+                            </ion-label>
+                        </ion-text>
+                    </div>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

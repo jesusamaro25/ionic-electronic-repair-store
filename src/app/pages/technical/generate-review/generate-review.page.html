@@ -1,0 +1,42 @@
+<!--paso 18: Hacemos la interpolacion como ya estamos acostumbrados, es decir guiandonos de postman. Acá tuve cuidado
+en el valor del ion select con respecto a los resultados del diagnostico, porque antes enviaba el nombre de ellos y yo necesitaba era mandar el id,
+asi que lo cambié. Pero no siempre sera r.id, quizás esté más oculto lo que queremos mostrar/enviar-->
+<app-header titulo="Revisión"></app-header>
+
+<ion-content>
+    <form novalidate [formGroup]="reviewGroup">
+        <ion-grid>
+            <ion-item color="tertiary">
+                <ion-label position="floating">Diagnóstico:</ion-label>
+                <ion-input type="text" formControlName="diagnostico" placeholder="Describe el diagnóstico"> </ion-input>
+            </ion-item>
+            <ion-item color="secondary">
+                <ion-label position="floating">Resultado del diagnóstico</ion-label>
+                <ion-select cancelText="Cancelar" okText="Seleccionar" (ionChange)="generarMotivo()" formControlName="resultado" required>
+                    <ion-select-option *ngFor="let r of result" [value]="r.id">{{ r.nombre }}</ion-select-option>
+                </ion-select>
+            </ion-item>
+            <ion-item color="secondary" *ngIf="mostrarMotivo">
+                <ion-label position="floating">Motivo</ion-label>
+                <ion-select cancelText="Cancelar" okText="Seleccionar" formControlName="descripcion">
+                    <ion-select-option *ngFor="let m of motive" [value]="m">{{ m.descripcion }}</ion-select-option>
+                </ion-select>
+            </ion-item>
+            <ion-item color="primary">
+                <ion-label position="floating">Costo de revisión:</ion-label>
+                <ion-input type="number" formControlName="costo" (ionBlur)="generarLog()" required> </ion-input>
+            </ion-item>
+
+        </ion-grid>
+
+        <ion-item>
+            <ion-label *ngFor="let c of costo">
+                El costo actual de revisión esta entre: <br> <strong>{{c.precioMinimoRevision}} y {{c.precioMaximoRevision}}</strong>
+            </ion-label>
+
+        </ion-item>
+        <ion-button type="submit" [disabled]="reviewGroup.invalid" expand="block" color="secondary" (click)="presentContact()">
+            Guardar
+        </ion-button>
+    </form>
+</ion-content>

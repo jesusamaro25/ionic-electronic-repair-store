@@ -1,0 +1,32 @@
+<app-header titulo="Cuéntanos sobre ti"> </app-header>
+<ion-content>
+    <form>
+        <ion-card>
+            <ion-card-header>
+                <ion-card-subtitle class="tittle">{{response}}</ion-card-subtitle>
+            </ion-card-header>
+            <ion-list>
+                <ion-item>
+                    <ion-label>Gustos</ion-label>
+                    <ion-select multiple="true" okText="Ok" cancelText="Cancelar" [(ngModel)]="pleasure" [compareWith]="compareFn" [ngModelOptions]="{standalone: true}">
+                        <ion-select-option *ngFor="let entry of pleasureAll" [value]="entry"> {{ entry.nombre }}</ion-select-option>
+                    </ion-select>
+                </ion-item>
+            </ion-list>
+        </ion-card>
+        <ion-card>
+            <ion-card-header>
+                <ion-card-subtitle class="tittle">Indique su ocupación</ion-card-subtitle>
+            </ion-card-header>
+            <ion-list>
+                <ion-item>
+                    <ion-label>Ocupación</ion-label>
+                    <ion-select multiple="true" okText="Ok" cancelText="Cancelar" [(ngModel)]="job" [compareWith]="compareFn" [ngModelOptions]="{standalone: true}">
+                        <ion-select-option *ngFor="let entry of jobAll; let i = index;" [value]="entry">{{ entry.nombre }}</ion-select-option>
+                    </ion-select>
+                </ion-item>
+            </ion-list>
+        </ion-card>
+        <ion-button expand="block" (click)="salirModal()">Enviar</ion-button>
+    </form>
+</ion-content>

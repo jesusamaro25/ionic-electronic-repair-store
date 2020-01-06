@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start" color="fourth">
+      <ion-button slot="icon-only" (click)="popOne($event)">
+        <ion-icon name="clipboard" mode="md" size="large"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button slot="icon-only" (click)="popTwo($event)">
+        <ion-icon name="help-circle-outline" mode="ios" size="large"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title> {{ logo?.nombre }} </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-slides pager="true" [options]="slideOpts" mode="ios" fullscreen scroll-y="false">
+    <ion-slide>
+      <div>
+        <ion-row>
+          <ion-col>
+            <img src="{{ logo?.urlLogo }}" alt="Smartech"/>
+            <p>¿Deseas conocernos?
+                Desliza para mayor información <ion-icon name="arrow-forward" size="small"></ion-icon> </p>
+          </ion-col>
+        </ion-row> 
+      </div>
+    </ion-slide>
+    <ion-slide *ngFor="let info of index">
+      <div>
+        <ion-row>
+          <ion-col>
+            <img src="{{ info.urlImagen }}" alt="Imagen" class="image"/>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <h3>{{ info.titulo }}</h3>
+            <p> {{ info.descripcion }} </p>
+          </ion-col>
+        </ion-row>
+      </div>
+    </ion-slide>
+  </ion-slides>
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar color="primary">
+        <ion-grid>
+            <ion-row>
+                <ion-col size="6">
+                    <ion-button mode="ios" routerLink="/suscribe" class="button">
+                        <ion-icon name="create" mode="ios"></ion-icon> Suscribirse </ion-button>
+                </ion-col>
+                <ion-col size="6">
+                    <ion-button mode="ios" routerLink="/login" class="button">
+                        <ion-icon name="log-in" mode="ios"></ion-icon> Ingresar </ion-button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-toolbar>
+</ion-footer>

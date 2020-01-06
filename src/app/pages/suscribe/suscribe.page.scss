@@ -1,0 +1,21 @@
+ion-content {
+    --background: linear-gradient(to bottom left,#1f5f8b, #18aca0);
+}
+
+ion-item{
+    --background: #fff;
+    --color: #343434;
+    opacity: 0.9;
+}
+
+ion-button{
+    --background: #1f5f8b;
+}
+
+ion-input {
+    padding-left: 20px !important;  
+}
+
+ion-label {
+    padding-left: 20px !important;  
+}

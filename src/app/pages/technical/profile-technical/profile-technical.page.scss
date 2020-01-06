@@ -1,0 +1,41 @@
+
+.theme-1, .theme-color{
+    --color: white;
+    --text-align: center;
+}
+
+.theme-color{
+    --background: #253b6d;
+}
+
+.theme-1{
+    --background: #1f5f8b;
+}
+
+.button{
+    margin: 5% 17%;
+}
+
+.center{
+    margin: auto;
+    padding-top: 10px;
+    
+ }
+
+ ion-content {
+    --background: url('/assets/fondo.jpg') no-repeat center center / cover;
+}
+
+ion-avatar {
+    width: 100px;
+    height: 100px;
+}
+
+.tittle {
+    font-weight: bold;
+    color:#474747;
+}
+
+h3 {
+    text-align: center;
+}

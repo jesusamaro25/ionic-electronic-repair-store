@@ -1,0 +1,61 @@
+<app-header titulo="Presupuesto"></app-header>
+
+<ion-content *ngFor="let bud of budget">
+    <ion-row>
+        <ion-col>
+            <ion-card>
+                <ion-card-header class="card">
+                    <p><strong>Cliente:</strong> {{bud.usuario.nombre }} {{bud.usuario.apellido }}
+                    </p>
+                    <p><strong>Estado del presupuesto:</strong> {{estatus}}
+                    </p>
+                    <p><strong>Servicio requerido:</strong> {{bud.catalogoServicio.descripcion}}
+                    </p>
+                    <p><strong>Modelo del Equipo:</strong> {{bud.modeloEquipo.nombre}}
+                    </p>
+                    <p><strong>Marca del Equipo:</strong> {{bud.modeloEquipo.marca.nombre}}
+                    </p>
+                    <p><strong>Motivo de la solicitud:</strong> {{bud.descripcion}}
+                    </p>
+                    <p><strong>Diagnóstico:</strong> {{bud.revision.diagnostico}}
+                    </p>
+                    <p><strong>Costo de la revisión:</strong> {{bud.revision.costo}}
+                    </p>
+                    <p><strong>Costo del servicio:</strong> {{bud.presupuesto}}
+                    </p>
+                    <p class="desc"><strong color="danger">Descuento: </strong> <strong color="primary">{{promocion }} ({{bud.promocion.descuento.porcentaje }}%)</strong>
+                    </p>
+                    <p id="total"><strong>Total a pagar:</strong> {{ total }}
+                    </p>
+                    <p><strong>Actividad de Reparación:</strong></p>
+                    <ul>
+                        <li *ngFor="let act of activity">{{act.nombre}}</li>
+                    </ul>
+                    <ion-row *ngIf="buttons" class="pad">
+                        <ion-col>
+                            <ion-button (click)="alertCancelSol()" block color="medium" class="top-20" icon-start>
+                                Rechazar
+                            </ion-button>
+                        </ion-col>
+                        <ion-col>
+                            <ion-button (click)="alertSendSol()" block color="primary" icon-start>
+                                Aceptar
+                            </ion-button>
+                        </ion-col>
+                    </ion-row>
+                </ion-card-header>
+                <ion-item>
+                    <ion-label text-wrap>
+
+                    </ion-label>
+                </ion-item>
+            </ion-card>
+        </ion-col>
+    </ion-row>
+
+
+
+
+
+
+</ion-content>

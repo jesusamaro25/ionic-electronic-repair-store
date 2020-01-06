@@ -1,0 +1,18 @@
+<app-header titulo="Servicios disponibles"></app-header> 
+
+<ion-content fullscreen #myContent>
+  <ion-grid>
+    <ion-searchbar animated (ionChange)="find( $event )" class="searchbar-input"></ion-searchbar>
+    <ion-row size="12">
+      <ion-col size="6" *ngFor="let s of service | filter: findText: 'descripcion'">
+        <ion-card class="colors" routerLink="/activities-catalog/{{s.id}}" *ngIf="s.length != 0">
+          <div class="ion-text-center"> 
+            <ion-badge class="promo" *ngIf="s.promociones.length">¡Promoción disponible!</ion-badge>
+            <p> {{ s?.descripcion }} </p>
+          </div>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+ 

@@ -1,0 +1,36 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/app1/tab-technical"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Revisión de equipos</ion-title>
+    </ion-toolbar>
+
+    <ion-searchbar animated (ionChange)="find( $event )"></ion-searchbar>
+</ion-header>
+
+<ion-content fullscreen #myContent>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <ion-grid>
+        <ion-list>
+            <ion-item *ngFor="let rev of service | filter: findText: 'descripcion'" routerLink="/review-details/{{rev.id}}" detail>
+                <ion-label>
+                    <h3>Equipo: {{ rev.modeloEquipo.marca.nombre }} {{ rev.modeloEquipo.nombre }}</h3>
+                    <h3>Problema: {{ rev.descripcion }}</h3>
+                    <h3>Cliente: {{ rev.usuario.nombre }} {{ rev.usuario.apellido }}</h3>
+                </ion-label>
+            </ion-item>
+        </ion-list>
+        <!--<ion-row>
+      <ion-col size="12" *ngFor="let rev of review | filter: findText: 'modelo'">
+        <ion-card class="colors" routerLink="/review-details/{{rev.id}}" detail>
+          <ion-text> 
+           {{ rev.modelo }}
+          </ion-text>
+        </ion-card>
+      </ion-col>
+    </ion-row>-->
+    </ion-grid>
+</ion-content>

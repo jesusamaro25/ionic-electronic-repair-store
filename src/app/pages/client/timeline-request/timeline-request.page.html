@@ -1,0 +1,16 @@
+<app-header titulo="Progreso de la solicitud"></app-header>
+
+<ion-content>
+    <ion-grid>
+        <div class="">
+            <ul class="timeline">
+                <li *ngFor="let tlr of timeline">
+                    <div class="timeline-thumb bg-color-grey timeline-icon"></div>
+                    <div class="timeline-item">
+                        <p> {{ tlr.fechaMovimiento}} - {{ tlr.descripcion }}</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </ion-grid>
+</ion-content>

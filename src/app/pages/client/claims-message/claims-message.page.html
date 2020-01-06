@@ -1,0 +1,41 @@
+<app-header titulo="Reclamo"></app-header>
+
+<ion-content padding>
+
+    <form novalidate [formGroup]="serviceGroup">
+        <ion-list>
+            <ion-item color="secondary">
+                <ion-label position="floating">Tipo</ion-label>
+                <ion-select cancelText="Cancelar" okText="Seleccionar" required (ionChange)="generarLink()" [formControl]="serviceGroup.get('option')">
+                    <ion-select-option *ngFor="let opt of option" [value]="opt">{{ opt.nombre }}</ion-select-option>
+                </ion-select>
+            </ion-item>
+
+        </ion-list>
+        <ion-item class="margen" color="tertiary">
+            <ion-label>
+                Selecciona un día para que un técnico revise de nuevo tu equipo:
+            </ion-label>
+            <ion-datetime (ionChange)="mostrarHora()" placeholder="ej.01/12/2000" formControlName="fecha" display-format="D/MM/YYYY" picker-format="DMMMM YYYY" cancelText="Cancelar" doneText="Aceptar" monthNames="Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre"
+                [min]="today" [max]="todayplusyear" mode="ios"></ion-datetime>
+        </ion-item>
+        <ion-list *ngIf="bloqueHora">
+            <ion-item color="secondary">
+                <ion-label position="floating">
+                    Horario
+                </ion-label>
+
+                <ion-select cancelText="Cancelar" okText="Seleccionar" formControlName="hora" (ionChange)="generarRuta()">
+                    <ion-select-option *ngFor="let h of bloquehora" [value]="h">{{ h.descripcion }}
+                    </ion-select-option>
+                </ion-select>
+
+
+            </ion-item>
+        </ion-list>
+        <ion-button expand="full" type="submit" [disabled]="serviceGroup.invalid" (click)="presentContact()">
+            Enviar
+        </ion-button>
+    </form>
+
+</ion-content>

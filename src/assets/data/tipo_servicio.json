@@ -1,0 +1,27 @@
+[
+    {
+      "nombre_entidad_tipo_servicio": { 
+      "id_tipo_servicio": 1,
+      "nombre": "Reparación de PC"
+    }
+    },
+    {
+        "nombre_entidad_tipo_servicio": { 
+        "id_tipo_servicio": 2,
+        "nombre": "Reparación de videojuegos"
+      }
+      },
+      {
+        "nombre_entidad_tipo_servicio": { 
+        "id_tipo_servicio": 3,
+        "nombre": "Mantenimiento de PC"
+      }
+      },
+      {
+        "nombre_entidad_tipo_servicio": { 
+        "id_tipo_servicio": 3,
+        "nombre": "Mantenimiento de videojuegos "
+      }
+      }
+  ]
+  

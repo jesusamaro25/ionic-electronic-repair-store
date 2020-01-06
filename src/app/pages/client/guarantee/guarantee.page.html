@@ -1,0 +1,57 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Garantía</ion-title>
+    </ion-toolbar>
+    <ion-toolbar>
+
+        <ion-segment (ionChange)="segmentChanged($event)" [(ngModel)]="section">
+            <ion-segment-button checked value="garantia">
+                <ion-label>Garantía</ion-label>
+            </ion-segment-button>
+
+            <ion-segment-button value="reclamos">
+                <ion-label>Reclamos</ion-label>
+            </ion-segment-button>
+        </ion-segment>
+    </ion-toolbar>
+
+
+
+</ion-header>
+
+
+
+<ion-content fullscreen #myContent>
+
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" class="animated fadeIn fast">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
+    <div [ngSwitch]="section" selectedIndex="garantia">
+        <ion-list class="animated fadeIn fast" *ngSwitchCase="'garantia'">
+            <ion-item *ngFor=" let gua of guarantee, let ter of term, let cla of claims | filter: findText: 'modelo'" routerLink="/claims-detail/{{gua.id}}/{{gua.ordenServicio.garantia.id}}/" detail>
+                <ion-text>
+
+                    {{ gua.modeloEquipo.marca.nombre }} {{ gua.modeloEquipo.nombre }} ({{ gua.catalogoServicio.descripcion }})
+
+                </ion-text>
+            </ion-item>
+        </ion-list>
+        <ion-list *ngSwitchCase="'reclamos'">
+            <ion-item *ngFor="let cla of claims, let gua of guarantee, let ter of term | filter: findText: 'modelo'" routerLink="/guarantee-detail/{{cla.id}}/" detail>
+
+                <ion-text>
+
+                    {{ cla.ordenServicio.solicitudServicio.modeloEquipo.marca.nombre }} {{ cla.ordenServicio.solicitudServicio.modeloEquipo.nombre }} ({{ cla.ordenServicio.solicitudServicio.catalogoServicio.descripcion }})
+
+                </ion-text>
+            </ion-item>
+        </ion-list>
+
+
+    </div>
+
+</ion-content>

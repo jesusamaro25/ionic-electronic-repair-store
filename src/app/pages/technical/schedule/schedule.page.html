@@ -1,0 +1,46 @@
+<app-header titulo="Agenda"></app-header>
+
+<ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" class="animated fadeIn fast">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <ion-grid>
+        <ion-row *ngFor="let tarea of tareas">
+            <ion-col>
+                <ion-card class="colors" detail>
+                    <div class="date">
+                        <ion-text>
+                            <ion-label>
+                                {{ tarea.fechaActividad }}
+                            </ion-label>
+                            <ion-label>
+                                {{ tarea.bloqueHorario.descripcion }}
+                            </ion-label>
+                            <ion-button size="small" color="success" (click)="alertEndSche(tarea.id)">
+                                <ion-icon name="checkmark-circle-outline"></ion-icon>
+                            </ion-button>
+                            <ion-button size="small" color="danger" routerLink="/incidents-register/{{tarea.id}}">
+                                <ion-icon name="warning"></ion-icon>
+                            </ion-button>
+                        </ion-text>
+                    </div>
+                    <div class="info">
+                        <ion-text>
+                            <ion-label class="equip">
+                                {{ tarea.ordenServicio.solicitudServicio.modeloEquipo.marca.nombre }} {{ tarea.ordenServicio.solicitudServicio.modeloEquipo.nombre }}
+
+                            </ion-label>
+                            <ion-label>
+                                {{tarea.descripcion}}
+                            </ion-label>
+                            <ion-label>
+                                {{ tarea.ordenServicio.solicitudServicio.usuario.nombre }} {{ tarea.ordenServicio.solicitudServicio.usuario.apellido }}
+
+                            </ion-label>
+                        </ion-text>
+                    </div>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

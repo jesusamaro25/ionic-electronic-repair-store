@@ -1,0 +1,43 @@
+<app-header titulo="Detalles de la Garantía"></app-header>
+
+<ion-content>
+    <ion-row>
+        <ion-col>
+            <ion-card *ngFor="let sa of singleArray">
+                <ion-card-header class="card">
+                    <p>
+                        <strong> Cliente : </strong> {{sa.o.solicitudServicio.usuario.nombre}} {{sa.o.solicitudServicio.usuario.apellido}}
+                    </p>
+                    <p>
+                        <strong>Servicio Solicitado : </strong> {{sa.o.solicitudServicio.catalogoServicio.descripcion}}
+                    </p>
+                    <p>
+                        <strong>Equipo: </strong> {{sa.o.solicitudServicio.modeloEquipo.marca.nombre}} {{sa.o.solicitudServicio.modeloEquipo.nombre}}
+                    </p>
+                    <p>
+                        <strong>Problema del equipo: </strong> {{sa.o.solicitudServicio.revision.diagnostico}}
+                    </p>
+                    <p><strong>Condiciones de garantía : </strong></p>
+                    <ul>
+                        <li *ngFor="let act of activities">{{act.descripcion}}</li>
+                    </ul>
+                    <p>
+                        <strong> Fecha de inicio de garantía: </strong> {{sa.g.fechaCreacion}}
+                    </p>
+                    <p>
+                        <strong>Fecha de vencimiento de garantía : </strong> {{sa.g.fechaExpiracion}}
+                    </p>
+                    <p><strong>Días restantes de garantía : </strong> {{fecha}}</p>
+                    <div *ngIf="fecha != 0">
+                        <ion-button expand="block" color="secondary" routerLink="/claims-message/{{idServicio}}/{{sa.o.usuario.id}}/" detail>
+                            Generar Reclamo
+                        </ion-button>
+                    </div>
+                </ion-card-header>
+                <ion-item>
+                    <ion-label text-wrap> </ion-label>
+                </ion-item>
+            </ion-card>
+        </ion-col>
+    </ion-row>
+</ion-content>

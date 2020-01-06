@@ -1,0 +1,12 @@
+[
+    {
+        "id_tipo_servicio": 1,
+        "id_tipo_equipo": 11,
+        "nombre": "Teléfono"
+    },
+    {
+        "id_tipo_servicio": 2,
+        "id_tipo_equipo": 12,
+        "nombre": "PC"
+    }
+]

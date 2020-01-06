@@ -1,0 +1,14 @@
+<app-header titulo="Calificar servicio"></app-header>
+
+<ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <ion-list>
+        <ion-item size="6" *ngFor="let r of rate | filter: findText: 'modelo_equipo'" routerLink="/rate-details/{{r.id}}">
+            <ion-text>
+                {{ r.solicitudServicio.modeloEquipo.marca.nombre }} {{ r.solicitudServicio.modeloEquipo.nombre }} ({{r.solicitudServicio.catalogoServicio.descripcion}})
+            </ion-text>
+        </ion-item>
+    </ion-list>
+</ion-content>

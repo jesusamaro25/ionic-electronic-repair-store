@@ -1,0 +1,29 @@
+<app-header titulo="Calendario"></app-header>
+
+
+<ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" class="animated fadeIn fast">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
+   
+    <ion-row color="primary" >
+      <ion-col class="col">
+        {{ viewTitle }}
+      </ion-col>
+    </ion-row>
+   
+    <calendar 
+    [eventSource]="eventSource" 
+    [calendarMode]="calendar.mode" 
+    [currentDate]="calendar.currentDate"
+    (onEventSelected)="onEventSelected($event)"
+    (onTitleChanged)="onViewTitleChanged($event)"
+    (onTimeSelected)="onTimeSelected($event)" 
+    startHour="6"
+    endHour="20"
+    step="30"
+    startingDayWeek="1"
+    noEventsLabel="No hay eventos para este día">
+    </calendar>
+   
+  </ion-content>

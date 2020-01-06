@@ -1,0 +1,23 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/app/tabs" text=""></ion-back-button>
+        </ion-buttons>
+        <ion-title text-capitalize>Promociones</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content padding>
+  <ion-card *ngFor="let pro of promotions | filter: findText: 'nombre'">
+    <ion-card-header>
+      <ion-card-subtitle>Fecha de expiración: {{ pro.fechaExpiracion}}</ion-card-subtitle>
+      <ion-card-title> {{ pro.nombre}}</ion-card-title>
+      <img src="{{pro.urlImagen}}">
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{ pro.descripcion }}</p>
+    </ion-card-content>
+    <ion-button expand="full" color="tertiary" (click)="navigate(pro.id)">
+      Solicitar
+    </ion-button>
+  </ion-card>
+</ion-content>

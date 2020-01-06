@@ -1,0 +1,40 @@
+<app-header titulo="Agenda de mis servicios"></app-header>
+
+<ion-content>
+    <ion-grid>
+        <ion-row *ngFor="let tarea of tareas">
+            <ion-col>
+                <ion-card class="colors" detail>
+                    <div class="date">
+                        <ion-text>
+                            <ion-label>
+                                {{tarea.fechaActividad}}
+                            </ion-label>
+                            <ion-label>
+                                {{tarea.bloqueHorario.descripcion}}
+                            </ion-label>
+                            <ion-button size="small" color="success" (click)="alertEndServ(tarea.id)">
+                                <ion-icon name="checkmark-circle-outline"></ion-icon>
+                            </ion-button>
+                            <ion-button size="small" color="danger" routerLink="/incidents-register/{{tarea.id}}">
+                                <ion-icon name="warning"></ion-icon>
+                            </ion-button>
+                        </ion-text>
+                    </div>
+                    <div class="info"> 
+                        <ion-text>
+                            <ion-label class="equip">
+                                {{tarea.descripcion}}
+                            </ion-label>
+                        </ion-text>
+                    </div>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed" routerLink="/my-services-calendar/{{serviceId}}/{{techId}}">
+        <ion-fab-button block color="primary">
+            <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+</ion-content>

@@ -1,0 +1,75 @@
+<app-header titulo="Registrar Incidencia"></app-header>
+
+<ion-content padding>
+
+
+
+    <form novalidate [formGroup]="dateGroup">
+
+        <ion-list>
+
+
+
+            <ion-item color="secondary">
+                <ion-label position="floating">Tipo de incidencia</ion-label>
+                <ion-select cancelText="Cancelar" okText="Seleccionar" required (ionChange)="generarLink()" formControlName="idTipoIncidencia">
+                    <ion-select-option *ngFor="let opt of types" [value]="opt.id">{{ opt.nombre }}</ion-select-option>
+                </ion-select>
+            </ion-item>
+
+
+
+
+            <ion-item color="secondary">
+                <ion-label position="floating">Descripción</ion-label>
+
+                <ion-textarea type="text" placeholder="Describa la incidencia" formControlName="descripcionIncidencia" (ionBlur)="generarLink()" required></ion-textarea>
+            </ion-item>
+            <ion-item color="tertiary">
+                <ion-label position="floating">Actividad</ion-label>
+                <ion-input value="Revisión" disabled></ion-input>
+            </ion-item>
+        </ion-list>
+
+        <ion-item class="margen" color="tertiary">
+            <ion-label>
+                Fecha:
+            </ion-label>
+            <ion-datetime (ionChange)="mostrarHora()" placeholder="ej.01/12/2000" formControlName="fechaActividad" display-format="D/MM/YYYY" picker-format="DMMMM YYYY" cancelText="Cancelar" doneText="Aceptar" monthNames="Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre"
+                [min]="today" [max]="todayplusyear" mode="ios"></ion-datetime>
+        </ion-item>
+        <ion-list *ngIf="hour">
+            <ion-item color="secondary">
+                <ion-label position="floating">
+                    Selecciona el bloque de horario
+                </ion-label>
+
+                <ion-select cancelText="Cancelar" okText="Seleccionar" formControlName="idBloqueHorario" (ionChange)="generarRuta()">
+                    <ion-select-option *ngFor="let h of bloquehora" [value]="h.id">{{ h.descripcion }}
+                    </ion-select-option>
+                </ion-select>
+
+
+            </ion-item>
+        </ion-list>
+        <!--<p color="danger" *ngIf="dateGroup.get('tecnico').hasError('required') && booltec==true" padding> No hay técnicos disponibles para el día y hora seleccionados, por favor escoge nuevamente.</p>-->
+        <ion-row class="button">
+            <ion-col>
+
+                <ion-button (click)="alertCancelSol()" block color="medium" class="top-20" icon-start>
+                    Cancelar
+                </ion-button>
+            </ion-col>
+            <ion-col>
+
+                <ion-button (click)="alertSendSol()" block color="primary" icon-start>
+                    Reagendar
+                </ion-button>
+            </ion-col>
+        </ion-row>
+
+    </form>
+
+
+
+</ion-content>

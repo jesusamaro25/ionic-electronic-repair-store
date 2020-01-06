@@ -1,0 +1,25 @@
+ion-content {
+    --background: url('/assets/bg.jpg') no-repeat center center / cover;
+}
+
+ion-datetime {
+    --placeholder-color: white;
+}
+
+.button {
+    text-align: center;
+    margin-top: 20px;
+}
+
+ion-select {
+    width: 190% !important;
+    max-width: 190% !important;
+    font-size: small;
+}
+
+.error {
+    margin: 50% 16.5% 0% 15%;
+    padding: 2%;
+    text-align: center;
+    color: #474747;
+}

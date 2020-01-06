@@ -1,0 +1,22 @@
+ion-content {
+    --background: url('/assets/bg.jpg') no-repeat center center / cover;
+}
+
+ion-searchbar {
+    --color: #000;
+    --placeholder-color: #ffffff;
+}
+
+.margin {
+    margin-top: 35px;
+}
+
+.margin-promo {
+    margin-top: 25px;
+}
+
+ion-select {
+    width: 190% !important;
+    max-width: 190% !important;
+    font-size: small;
+}

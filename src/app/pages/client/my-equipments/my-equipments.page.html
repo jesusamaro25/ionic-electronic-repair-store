@@ -1,0 +1,27 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Mis equipos</ion-title>
+    </ion-toolbar>
+
+    <ion-searchbar animated (ionChange)="find( $event )" class="searchbar-input"></ion-searchbar>
+</ion-header>
+
+<ion-content fullscreen #myContent>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" class="animated fadeIn fast">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <ion-grid>
+        <ion-row>
+            <ion-col size="6" *ngFor="let eq of equipment | filter: findText: 'estatus'">
+                <ion-card class="colors" routerLink="/my-equipment-details/{{eq.id}}" detail>
+                    <ion-text>
+                        {{ eq.solicitudServicio.modeloEquipo.marca.nombre }} {{ eq.solicitudServicio.modeloEquipo.nombre }} ({{ eq.solicitudServicio.catalogoServicio.descripcion}}) {{ eq.estatus }}
+                    </ion-text>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

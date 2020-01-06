@@ -1,0 +1,64 @@
+<app-header titulo="Fecha de revisión"></app-header>
+
+<ion-content padding>
+	<form novalidate [formGroup]="dateGroup">
+		<ion-grid>
+			<ion-list>
+				<ion-list-header color="tertiary">
+					<ion-label class="label">
+						Agenda la fecha de tu preferencia para el diagnóstico
+					</ion-label>
+				</ion-list-header>
+				<ion-item class="margen" color="secondary">
+					<ion-label>
+						Fecha:
+					</ion-label>
+					<ion-datetime (ionChange)="mostrarHora()" (ionChange)="buscarTecnico()" placeholder="ej.01/12/2000" formControlName="fecha"
+						display-format="D/MM/YYYY" picker-format="DMMMM YYYY" cancelText="Cancelar" doneText="Aceptar"
+						monthNames="Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre"
+						[min]="today" [max]="todayplusyear" mode="ios"></ion-datetime>
+				</ion-item>
+				<ion-list *ngIf="bloqueHora">
+					<ion-item color="secondary">
+						<ion-label position="floating">
+							Selecciona el bloque de horario
+						</ion-label>
+
+						<ion-select cancelText="Cancelar" okText="Seleccionar" formControlName="hora"
+							(ionChange)="generarRuta()" (ionChange)="buscarTecnico()">
+							<ion-select-option *ngFor="let h of bloquehora" [value]="h">{{ h.descripcion }}
+							</ion-select-option>
+						</ion-select>
+					</ion-item>
+
+					<!--<ion-radio-group formControlName="hora" *ngFor="let h of bloque" >
+						<ion-item>
+							<ion-label>{{ h.rango }}</ion-label>
+							<ion-radio slot="start" [value]="h.rango"></ion-radio>
+						</ion-item>	
+					</ion-radio-group>
+					<ion-item>
+							<ion-label>10:00AM - 12:00PM</ion-label>
+							<ion-radio slot="start" value="10:00AM - 12:00PM"></ion-radio>
+						</ion-item>
+						<ion-item>
+							<ion-label>2:00PM - 03:59PM</ion-label>
+							<ion-radio slot="start" value="2:00PM - 03:59PM" checked></ion-radio>
+						</ion-item>
+						<ion-item>
+							<ion-label>4:00PM - 6:00PM</ion-label>
+							<ion-radio slot="start" value="4:00PM - 6:00PM"></ion-radio>
+						</ion-item>-->
+
+				</ion-list>
+
+				<p color="danger" *ngIf="dateGroup.get('tecnico').hasError('required') && booltec==true" padding> No hay técnicos disponibles para el día y hora seleccionados, por favor escoge nuevamente.</p>
+
+				<ion-button expand="block" color="primary" (click)="consoleLog()" [disabled]="dateGroup.invalid"
+					(click)="goToPage()">
+					Siguiente
+				</ion-button>
+			</ion-list>
+		</ion-grid>
+	</form>
+</ion-content>

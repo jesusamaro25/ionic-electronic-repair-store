@@ -1,0 +1,73 @@
+<app-header titulo="Agendar Servicio"></app-header>
+
+<ion-content padding>
+    <div *ngIf="showActs; else notShow" class="error">
+        <p>
+            No Hay más actividades por agendar, por favor finalice el servicio.
+        </p>
+    </div>
+
+    <ng-template #notShow>
+
+        <form novalidate [formGroup]="dateGroup">
+
+            <ion-list>
+
+
+
+                <ion-item color="secondary">
+                    <ion-label position="floating">Actividad</ion-label>
+                    <ion-select cancelText="Cancelar" okText="Seleccionar" required (ionChange)="generarLink()" [formControl]="dateGroup.get('option')">
+                        <ion-select-option *ngFor="let opt of option" [value]="opt">{{ opt.nombre }}</ion-select-option>
+                    </ion-select>
+                </ion-item>
+
+
+
+
+
+            </ion-list>
+
+            <ion-item class="margen" color="tertiary">
+                <ion-label>
+                    Día:
+                </ion-label>
+                <ion-datetime (ionChange)="mostrarHora()" placeholder="ej.01/12/2000" formControlName="fecha" display-format="D/MM/YYYY" picker-format="DMMMM YYYY" cancelText="Cancelar" doneText="Aceptar" monthNames="Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre"
+                    [min]="today" [max]="todayplusyear" mode="ios"></ion-datetime>
+            </ion-item>
+            <ion-list *ngIf="bloqueHora">
+                <ion-item color="secondary">
+                    <ion-label position="floating">
+                        Horario
+                    </ion-label>
+
+                    <ion-select cancelText="Cancelar" okText="Seleccionar" formControlName="hora" (ionChange)="generarRuta()">
+                        <ion-select-option *ngFor="let h of bloquehora" [value]="h">{{ h.descripcion }}
+                        </ion-select-option>
+                    </ion-select>
+
+
+                </ion-item>
+            </ion-list>
+            <!--<p color="danger" *ngIf="dateGroup.get('tecnico').hasError('required') && booltec==true" padding> No hay técnicos disponibles para el día y hora seleccionados, por favor escoge nuevamente.</p>-->
+            <ion-row class="button">
+                <ion-col>
+                    <ion-button (click)="alertCancelSol()" block color="medium" class="top-20" icon-start>
+                        Cancelar
+                    </ion-button>
+                </ion-col>
+                <ion-col>
+
+
+                    <ion-button (click)="alertSendSol()" block color="primary" icon-start>
+                        Agregar
+                    </ion-button>
+                </ion-col>
+            </ion-row>
+
+        </form>
+
+    </ng-template>
+
+
+</ion-content>

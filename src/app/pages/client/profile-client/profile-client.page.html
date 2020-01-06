@@ -1,0 +1,57 @@
+<app-header titulo="Perfil"></app-header>
+<ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <section class="center">
+        <ion-avatar class="center">
+            <img src="{{usuario.urlFoto}}">
+        </ion-avatar>
+        <ion-text color="primary">
+            <h3>{{usuario.nombre}} {{usuario.apellido}}</h3>
+        </ion-text>
+    </section>
+    <ion-card>
+        <ion-card-header>
+            <ion-card-subtitle class="tittle">Datos personales</ion-card-subtitle>
+        </ion-card-header>
+        <ion-item-group>
+            <ion-item>Documento de identidad: {{usuario?.documentoIdentidad }}</ion-item>
+            <ion-item>Correo: {{usuario?.correo}}</ion-item>
+            <ion-item>
+                <ion-textarea disabled="true">Dirección: {{usuario?.direccion}}</ion-textarea>
+            </ion-item>
+            <ion-item>Sexo: {{usuario?.sexo}} </ion-item>
+            <ion-item>Fecha de nacimiento: {{usuario?.fechaNacimiento}} </ion-item>
+            <ion-item>Teléfono: {{usuario?.telefono}} </ion-item>
+        </ion-item-group>
+    </ion-card>
+    <ion-card>
+        <ion-card-header>
+            <ion-card-subtitle class="tittle">Gustos</ion-card-subtitle>
+        </ion-card-header>
+        <ion-list>
+            <ion-item *ngFor="let p of plea; let i = index;">
+                <ion-label>{{ p.nombre }}</ion-label>
+                <ion-checkbox slot="end" disabled [value]="p" checked></ion-checkbox>
+            </ion-item>
+        </ion-list>
+    </ion-card>
+    <ion-card>
+        <ion-card-header>
+            <ion-card-subtitle class="tittle">Ocupación</ion-card-subtitle>
+        </ion-card-header>
+        <ion-list>
+            <ion-item *ngFor="let entry of job; let i = index;">
+                <ion-label>{{ entry.nombre }}</ion-label>
+                <ion-checkbox slot="end" disabled checked></ion-checkbox>
+            </ion-item>
+        </ion-list>
+    </ion-card>
+    <div class="centrado">
+        <ion-button block color="secondary" routerLink="/profile-client-edit">
+            <ion-icon name='md-open'></ion-icon>
+            Editar perfil
+        </ion-button>
+    </div>
+</ion-content>

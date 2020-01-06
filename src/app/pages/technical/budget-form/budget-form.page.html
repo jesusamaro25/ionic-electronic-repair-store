@@ -1,0 +1,27 @@
+<!--paso 18: Hacemos la interpolacion como ya estamos acostumbrados, es decir guiandonos de postman. Acá tuve cuidado
+en el ionchange del guardaractividades, porque antes enviaba el nombre de ellas y yo necesitaba era mandar el id,
+asi que lo cambié. Pero no siempre sera a.id, quizás esté más oculto lo que queremos mostrar/enviar-->
+<app-header titulo="Presupuesto"></app-header>
+
+<ion-content>
+    <form name="miform" id="miform" novalidate [formGroup]="actGroup">
+        <ion-grid>
+            <ion-list>
+                <ion-list-header color="secondary">
+                    <ion-label text-center class="label">
+                        Selecciona las actividades necesarias
+                    </ion-label>
+                </ion-list-header>
+                <ion-item id="acts" class="items" *ngFor="let a of actividades" (ionChange)="guardarActividades(a.id)">
+                    <ion-label>{{a.name}}</ion-label>
+                    <ion-checkbox slot="end"></ion-checkbox>
+                </ion-item>
+            </ion-list>
+        </ion-grid>
+
+
+        <ion-button expand="block" color="secondary" (click)="submit()">
+            Guardar
+        </ion-button>
+    </form>
+</ion-content>
